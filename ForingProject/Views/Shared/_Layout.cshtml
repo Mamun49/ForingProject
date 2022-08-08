@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফড়িং</title>
+    @Styles.Render("~/Content/css")
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ফড়িং", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    
+                </ul>
+                <ul class="nav navbar-nav" style="float:right !important">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Product List", "ProductList", "admin")</li>
+                            <li>@Html.ActionLink("Customers", "UserList", "admin")</li>
+                            @*<li>@Html.ActionLink("Role Management", "RoleList", "admin")</li>
+                            <li>@Html.ActionLink("Home Slider Setup", "AddImage", "Home")</li>*@
+
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Setup
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Role Management", "RoleList", "admin")</li>
+                                    <li>@Html.ActionLink("Customise Member", "Membershipdec", "admin")</li>
+                                    <li>@Html.ActionLink("Home Slider Setup", "AddImage", "Home")</li>
+                                </ul>
+                            </li>
+
+                            @*<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Setup
+                    </a>
+                    <ul>
+                        <li>@Html.ActionLink("Role Management", "RoleList", "admin")</li>
+                        <li>@Html.ActionLink("Home Slider Setup", "AddImage", "Home")</li>
+
+                    </ul>
+
+                </li>*@
+                            @*<li> <a asp-action="Edit" asp-controller="User" asp-rout-id="@Session["Mail"]" class="btn btn-link">Hello @Session["Mail"] </a></li>*@
+                            @*<li><p style="color:#fff;margin-top:15px;">Hello @Session["Mail"] </p></li>*@
+                            <li>@Html.ActionLink("View Card", "CardDisplay", "admin")</li>
+                            <li><a href="@Url.Action("Edit","admin",new { Mail= @User.Identity.Name})"> Hello, @User.Identity.Name</a></li>
+
+                            <li>@Html.ActionLink("Logout", "Logout", "User")</li>
+                        }
+                        if (User.IsInRole("User"))
+                        {
+
+                            <li>@Html.ActionLink("View Card", "CardDisplay", "admin")</li>
+                            @*<li> <a asp-action="Edit" asp-controller="User" asp-rout-id="@Session["Mail"]" class="btn btn-link">Hello @Session["Mail"] </a></li>*@
+                            @*<li><p style="color:#fff;margin-top:15px;">Hello @Session["Mail"] </p></li>*@
+                            <li><a href=""> Dear @User.Identity.Name</a></li>
+
+                            <li>@Html.ActionLink("Logout", "Logout", "User")</li>
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("SignUp", "registration", "User")</li>
+                        <li>@Html.ActionLink("Login", "login", "User")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ফড়িং </p>
+        </footer>
+    </div>
+
+    <style>
+
+    </style>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

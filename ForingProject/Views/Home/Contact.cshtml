@@ -1,0 +1,287 @@
+﻿@{
+    //ViewBag.Title = "ফড়িং";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <title>ফড়িং</title>
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+
+    <link href="~/Content/hometheme/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/themify/css/themify-icons.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/counto/animate.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/aos/aos.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/owl-carousel/owl.theme.default.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/animated-text/animated-text.css" rel="stylesheet" />
+
+
+    <!-- Main Stylesheet -->
+
+    <link href="~/Content/hometheme/css/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <!-- Header Start -->
+
+    <nav class="navbar navbar-expand-lg  main-nav " id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="~/Home/Index">
+                <img src="~/Content/hometheme/images/foring-bag.png" alt="" class="img-fluid" width="200" height="200">
+            </a>
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="ti-align-justify"></span>
+            </button>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("User"))
+                {
+                    <div class="collapse navbar-collapse" id="navbarsExample09">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/CardDisplay">View Card</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="@Url.Action("Edit","admin",new { Mail= @User.Identity.Name})"> Hello, @User.Identity.Name</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/User/Logout">Logout</a></li>
+
+
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="collapse navbar-collapse" id="navbarsExample09">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/ProductList">Product List</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/UserList">User List List</a></li>
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Setup</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="~/admin/RoleList">Role Management</a></li>
+                                    <li><a class="dropdown-item" href="~/admin/Membershipdec">Customise Member</a></li>
+                                    <li><a class="dropdown-item" href="~/Home/AddImage">Home Image Setup</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/CardDisplay">View Card</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="@Url.Action("Edit","admin",new { Mail= @User.Identity.Name})"> Hello, @User.Identity.Name</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/User/Logout">Logout</a></li>
+
+
+                        </ul>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="collapse navbar-collapse" id="navbarsExample09">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                        <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                        <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item  active"><a class="nav-link" href="~/User/login">Sign in</a></li>
+                        <li class="nav-item  active"><a class="nav-link" href="~/User/registration">Sign Up</a></li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </nav>
+
+    <!-- Header Close -->
+
+
+    <section class="page-title section pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h1 class="text-capitalize mb-0 text-lg">Get in Touch</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact form start -->
+    <section class="contact section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0 col-md-4">
+                    <h4>Contact Info</h4>
+                    <p>Jakaria Ahmed Shimul <br> Chief Executing Officer</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0 col-md-4">
+                    <h4>Address</h4>
+                    <p>Road-1, Lane-15, A Block Bus Stand <br> Halishahar, Chittagong </p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4>Contact</h4>
+                    <p class="mb-0">info@foring.com</p>
+                    <p class="mb-0">Phone:01673732559</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="google-map">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5 contact-title">
+                        <h2>Contact us</h2>
+                    </div>
+
+                    <form id="contact-form" class="contact__form mt-5" method="post" action="mail.php">
+                        <!-- form message -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                    Your message was sent successfully.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end message -->
+                        <div class="form-row">
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <input name="name" type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <input name="name" type="text" class="form-control" placeholder="Your Subject">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <input name="email" type="email" class="form-control" placeholder="Email Address">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group-2 mb-4">
+                                    <textarea name="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
+                                </div>
+
+                                <div class="text-center">
+                                    <button class="btn btn-main" name="submit" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-6">
+                    <p class="mb-0">Copyrights © 2022. Designed & Developed by <a href="https://www.facebook.com/hasanmamun49" class="text-white">ফড়িং-Hasan</a></p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="widget footer-widget text-lg-right mt-5 mt-lg-0">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/foring.ss/" target="_blank"><i class="ti-facebook mr-3"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://api.whatsapp.com/send?phone=8801673732669&app=facebook&entry_point=page_cta/" target="_blank"><i class="ti-text mr-3"></i></a>
+                            </li>
+                            <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-github mr-3"></i></a></li>
+                            <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-pinterest mr-3"></i></a></li>
+                            <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-dribbble mr-3"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- jQuery -->
+
+    <script src="~/Content/hometheme/plugins/jQuery/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Content/hometheme/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Content/hometheme/plugins/aos/aos.js"></script>
+    <script src="~/Content/hometheme/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Content/hometheme/plugins/shuffle/shuffle.min.js"></script>
+    <script src="~/Content/hometheme/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/hometheme/plugins/animated-text/animated-text.js"></script>
+    <script src="~/Content/hometheme/plugins/counto/apear.js"></script>
+    <script src="~/Content/hometheme/plugins/counto/counTo.js"></script>
+
+    <!-- Google Map -->
+    <script src="~/Content/hometheme/plugins/google-map/map.js"></script>
+    <script src="https://g.page/foringctg?share"></script>
+    <!-- Main Script -->
+
+    <script src="~/Content/hometheme/js/script.js"></script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,383 @@
+﻿@model List<ForingProject.Models.tblImage>
+@{
+    //ViewBag.Title = "ফড়িং";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <title>ফড়িং</title>
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+
+    <link href="~/Content/hometheme/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/themify/css/themify-icons.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/counto/animate.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/aos/aos.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/owl-carousel/owl.theme.default.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/animated-text/animated-text.css" rel="stylesheet" />
+
+
+    <!-- Main Stylesheet -->
+    
+    <link href="~/Content/hometheme/css/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <!-- Navigation Start -->
+    <!-- Header Start -->
+
+    <nav class="navbar navbar-expand-lg  main-nav " id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="~/Home/Index">
+                <img src="~/Content/hometheme/images/foring-bag.png" alt="" class="img-fluid" width="200" height="200">
+            </a>
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="ti-align-justify"></span>
+            </button>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("User"))
+                {
+                    <div class="collapse navbar-collapse" id="navbarsExample09">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/CardDisplay">View Card</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="@Url.Action("Edit","admin",new { Mail= @User.Identity.Name})"> Hello, @User.Identity.Name</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/User/Logout">Logout</a></li>
+
+
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="collapse navbar-collapse" id="navbarsExample09">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/ProductList">Product List</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/UserList">User List List</a></li>
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Setup</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="~/admin/RoleList">Role Management</a></li>
+                                    <li><a class="dropdown-item" href="~/admin/Membershipdec">Customise Member</a></li>
+                                    <li><a class="dropdown-item" href="~/Home/AddImage">Home Image Setup</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/CardDisplay">View Card</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="@Url.Action("Edit","admin",new { Mail= @User.Identity.Name})"> Hello, @User.Identity.Name</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/User/Logout">Logout</a></li>
+
+
+                        </ul>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="collapse navbar-collapse" id="navbarsExample09">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                        <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                        <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item  active"><a class="nav-link" href="~/User/login">Sign in</a></li>
+                        <li class="nav-item  active"><a class="nav-link" href="~/User/registration">Sign Up</a></li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </nav>
+
+    <!-- Header Close -->
+    <!-- Navigation ENd -->
+    <!-- Banner Start -->
+    <section class="section banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <h2 class="cd-headline clip is-full-width mb-4 ">
+                        We provide <br>
+                        <span class="cd-words-wrapper text-color">
+                            <b class="is-visible">Best Design. </b>
+                            <b>Unique Fashinable Clothing.</b>
+                            <b>Cloth in affortable Price.</b>
+                        </span>
+                    </h2>
+                    <p>Something about foring. <br>History of foring</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner End -->
+    <!-- POrtfolio start -->
+    <section class="portfolio ">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-10">
+                    <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                        <label class="btn active ">
+                            <input type="radio" name="shuffle-filter" value="all" checked="checked" />All Products
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="shuffle-filter" value="design" />T-Shirts
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="shuffle-filter" value="branding" />Shirts
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="shuffle-filter" value="illustration" />Pants
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="shuffle-filter" value="photo" />Accessories
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row shuffle-wrapper portfolio-gallery">
+                <div class="col-lg-4 col-6 mb-4 shuffle-item" data-groups="[&quot;design&quot;,&quot;illustration&quot;]">
+                    <div class="position-relative inner-box">
+                        <div class="image position-relative ">
+                            <img src="~/Content/hometheme/images/portfolio/1.jpg" alt="portfolio-image" class="img-fluid w-100 d-block">
+
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <a class="overlay-content" href="portfolio-single.html">
+                                        <h5 class="mb-0">Painting</h5>
+                                        <p>Design</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-6 mb-4 shuffle-item" data-groups="[&quot;branding&quot;]">
+                    <div class="position-relative inner-box">
+                        <div class="image position-relative ">
+                            <img src="~/Content/hometheme/images/portfolio/4.jpg" alt="portfolio-image" class="img-fluid w-100 d-block">
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <a class="overlay-content" href="portfolio-single.html">
+                                        <h5 class="mb-0">Web app</h5>
+                                        <p>Development</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-6 mb-4 shuffle-item" data-groups="[&quot;illustration&quot;]">
+                    <div class="position-relative inner-box">
+                        <div class="image position-relative ">
+                            <img src="~/Content/hometheme/images/portfolio/3.jpg" alt="portfolio-image" class="img-fluid w-100 d-block">
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <a class="overlay-content" href="portfolio-single.html">
+                                        <h5 class="mb-0">Business </h5>
+                                        <p>marketing</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-6 mb-4 shuffle-item" data-groups="[&quot;design&quot;,&quot;branding&quot;]">
+                    <div class="position-relative inner-box">
+                        <div class="image position-relative ">
+                            <img src="~/Content/hometheme/images/portfolio/5.jpg" alt="portfolio-image" class="img-fluid w-100 d-block">
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <a class="overlay-content" href="portfolio-single.html">
+                                        <h5 class="mb-0">Portfolio</h5>
+                                        <p>Design</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-6 mb-4 shuffle-item" data-groups="[&quot;illustration&quot;]">
+                    <div class="position-relative inner-box">
+                        <div class="image position-relative ">
+                            <img src="~/Content/hometheme/images/portfolio/6.jpg" alt="portfolio-image" class="img-fluid w-100 d-block">
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <a class="overlay-content" href="portfolio-single.html">
+                                        <h5 class="mb-0 ">Modern web</h5>
+                                        <p>Seo</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-6 mb-4 shuffle-item" data-groups="[&quot;design&quot;,&quot;photo&quot;]">
+                    <div class="position-relative inner-box">
+                        <div class="image position-relative ">
+                            <img src="~/Content/hometheme/images/portfolio/7.jpg" alt="portfolio-image" class="img-fluid w-100 d-block">
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <a class="overlay-content" href="portfolio-single.html">
+                                        <h5 class="mb-0">Agency web</h5>
+                                        <p>Design</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio End -->
+    <!-- Service start -->
+    <section class="section service-home border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-2 ">Core Services.</h2>
+                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, totam ipsa quia hic odit a sit laboriosam voluptatem in, blanditiis.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="service-item mb-5" data-aos="fade-left">
+                        <i class="ti-layout"></i>
+                        <h4 class="my-3">Web Development</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-item mb-5" data-aos="fade-left" data-aos-delay="450">
+                        <i class="ti-announcement"></i>
+                        <h4 class="my-3">Digital Marketing</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-item mb-5 mb-lg-0" data-aos="fade-left" data-aos-delay="750">
+                        <i class="ti-layers"></i>
+                        <h4 class="my-3">Graphics Design</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-item" data-aos="fade-left" data-aos-delay="750">
+                        <i class="ti-anchor"></i>
+                        <h4 class="my-3">Branding Design</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-item mb-5" data-aos="fade-left" data-aos-delay="950">
+                        <i class="ti-video-camera"></i>
+                        <h4 class="my-3">Video Marketing</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-item mb-5 mb-lg-0" data-aos="fade-left" data-aos-delay="1050">
+                        <i class="ti-android"></i>
+                        <h4 class="my-3">App Design</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, earum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- service end -->
+    <!-- Footer start -->
+    <section class="footer">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-6">
+                    <p class="mb-0">Copyrights © 2022. Designed & Developed by <a href="https://www.facebook.com/hasanmamun49" class="text-white">ফড়িং-Hasan</a></p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="widget footer-widget text-lg-right mt-5 mt-lg-0">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/foring.ss/" target="_blank"><i class="ti-facebook mr-3"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://api.whatsapp.com/send?phone=8801673732669&app=facebook&entry_point=page_cta/" target="_blank"><i class="ti-text mr-3"></i></a>
+                            </li>
+                            <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-github mr-3"></i></a></li>
+                            <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-pinterest mr-3"></i></a></li>
+                            <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-dribbble mr-3"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- jQuery -->
+
+    <script src="~/Content/hometheme/plugins/jQuery/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Content/hometheme/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Content/hometheme/plugins/aos/aos.js"></script>
+    <script src="~/Content/hometheme/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Content/hometheme/plugins/shuffle/shuffle.min.js"></script>
+    <script src="~/Content/hometheme/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/hometheme/plugins/animated-text/animated-text.js"></script>
+    <script src="~/Content/hometheme/plugins/counto/apear.js"></script>
+    <script src="~/Content/hometheme/plugins/counto/counTo.js"></script>
+
+    <!-- Google Map -->
+    <script src="~/Content/hometheme/plugins/google-map/map.js"></script>
+    <script src="https://g.page/foringctg?share"></script>
+    <!-- Main Script -->
+    
+    <script src="~/Content/hometheme/js/script.js"></script>
+
+</html>

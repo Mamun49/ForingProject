@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+@using (Html.BeginForm("ProductList", "admin", FormMethod.Get))
+{
+    @Html.TextBox("searching") < Input type = "submit" value = "Search" />
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Membership Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ForingModel.Length() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No Product Found!
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in ForingModel)
+            {
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.ProductPrice</td>
+                    <td>@item.ProductType</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

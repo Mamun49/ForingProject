@@ -1,0 +1,281 @@
+﻿@model ForingProject.Models.user
+
+@{
+    // ViewBag.Title = "CardDisplay";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <title>ফড়িং</title>
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+
+    <link href="~/Content/hometheme/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/themify/css/themify-icons.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/counto/animate.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/aos/aos.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/owl-carousel/owl.theme.default.min.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" />
+
+    <link href="~/Content/hometheme/plugins/animated-text/animated-text.css" rel="stylesheet" />
+
+
+    <!-- Main Stylesheet -->
+
+    <link href="~/Content/hometheme/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg  main-nav " id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="~/Home/Index">
+                <img src="~/Content/hometheme/images/foring-bag.png" alt="" class="img-fluid" width="200" height="200">
+            </a>
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="ti-align-justify"></span>
+            </button>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("User"))
+                {
+                    <div class="collapse navbar-collapse" id="navbarsExample09">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/CardDisplay">View Card</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="@Url.Action("Edit","admin",new { Mail= @User.Identity.Name})"> Hello, @User.Identity.Name</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/User/Logout">Logout</a></li>
+
+
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="collapse navbar-collapse" id="navbarsExample09">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/ProductList">Product List</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/UserList">User List List</a></li>
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Setup</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="~/admin/RoleList">Role Management</a></li>
+                                    <li><a class="dropdown-item" href="~/admin/Membershipdec">Customise Member</a></li>
+                                    <li><a class="dropdown-item" href="~/Home/AddImage">Home Image Setup</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/admin/CardDisplay">View Card</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="@Url.Action("Edit","admin",new { Mail= @User.Identity.Name})"> Hello, @User.Identity.Name</a></li>
+                            <li class="nav-item  active"><a class="nav-link" href="~/User/Logout">Logout</a></li>
+
+
+                        </ul>
+                    </div>
+                }
+            }
+            else
+            {
+            <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item  active"><a class="nav-link" href="~/Home/Index">Home</a></li>
+                <li class="nav-item  active"><a class="nav-link" href="~/Home/About">About</a></li>
+                <li class="nav-item  active"><a class="nav-link" href="~/Home/Contact">Contact</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item  active"><a class="nav-link" href="~/User/login">Sign in</a></li>
+                <li class="nav-item  active"><a class="nav-link" href="~/User/registration">Sign Up</a></li>
+            </ul>
+            </div>
+                }
+        </div>
+</nav>
+
+        <h3 style="text-align:center">Your MemberShip Card</h3>
+
+        <section>
+        </section>
+        <section class="section service-home border-bottom">
+            <div class="container">
+                <style>
+                    h1 {
+                        text-align: center;
+                    }
+
+                    p {
+                        text-align: center;
+                        color: black
+                    }
+
+                    div {
+                        text-align: center;
+                    }
+                </style>
+                @*<style>
+                        body {
+                            background-image: url('~/img/silver.png');
+                            background-repeat: no-repeat;
+                            background-attachment: fixed;
+                            background-size: 100% 100%;
+                        }
+                    </style>
+
+                    <div class="card text-white bg-warning mb-3" style="max-width: 30rem;">
+                        <div class="card-header" text-align: center;
+                             vertical-align: middle;>Gold Card</div>
+                        <div class="card-body" text-align: center; vertical-align: middle>
+                            <p style="background-image: url('img_girl.jpg');">
+                                <h5 class="card-title">@Model.UserId</h5>
+                            <p class="card-text">@Model.Name <br> @Model.Mail</p>
+                        </div>
+                    </div>
+                </div>*@
+
+                    <div class="align-content-center">
+
+                        @if (Model.MemberStatus == "Silver")
+                        {
+
+                            <div class="container">
+                                <div class="card bg-dark text-white">
+                                    <div class="image">
+                                        <img src="~/img/silver.png" class="card-img" alt="..." width="200" height="500">
+                                        <div class="card-img-overlay" style="text-align:right">
+                                            <pre>
+                                    
+                                </pre>
+
+                                            <h5 class="card-title" style="text-align:right">@Model.MemberStatus Card Holder &nbsp; &nbsp; &nbsp;</h5>
+                                            <p class="card-text" style="text-align:right">@Model.UserId : @Model.Name &nbsp; &nbsp; &nbsp;</p>
+                                            <p class="card-text" style="text-align:right">@Model.MobileNo &nbsp; &nbsp; &nbsp;<br>@Model.Mail &nbsp; &nbsp; &nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (Model.MemberStatus == "Gold")
+                        {
+                            <div class="container">
+                                <div class="card bg-dark text-white">
+                                    <div class="image">
+                                        <img src="~/img/Gold.png" class="card-img" alt="..." width="200" height="500">
+                                        <div class="card-img-overlay" style="text-align:right">
+                                            <pre>
+                                    
+                                </pre>
+
+                                            <h5 class="card-title" style="text-align:right">@Model.MemberStatus Card Holder &nbsp; &nbsp; &nbsp;</h5>
+                                            <p class="card-text" style="text-align:right">@Model.UserId : @Model.Name &nbsp; &nbsp; &nbsp;</p>
+                                            <p class="card-text" style="text-align:right">@Model.MobileNo &nbsp; &nbsp; &nbsp;<br>@Model.Mail &nbsp; &nbsp; &nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="container">
+                                <div class="card bg-dark text-white">
+                                    <div class="image">
+                                        <img src="~/img/diamond.png" class="card-img" alt="..." width="200" height="500">
+                                        <div class="card-img-overlay" style="text-align:right">
+                                            <pre>
+                                    
+                                </pre>
+
+                                            <h5 class="card-title" style="text-align:right">@Model.MemberStatus Card Holder &nbsp; &nbsp; &nbsp;</h5>
+                                            <p class="card-text" style="text-align:right">@Model.UserId : @Model.Name &nbsp; &nbsp; &nbsp;</p>
+                                            <p class="card-text" style="text-align:right">@Model.MobileNo &nbsp; &nbsp; &nbsp;<br>@Model.Mail &nbsp; &nbsp; &nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+</div>
+    </section>
+        <section>
+        </section>
+        <section>
+        </section>
+        <section class="footer">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-lg-6">
+                        <p class="mb-0 text-white">Copyrights © 2022. Designed & Developed by <a href="https://www.facebook.com/hasanmamun49" class="text-white">ফড়িং-Hasan</a></p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="widget footer-widget text-lg-right mt-5 mt-lg-0">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item">
+                                    <a href="https://www.facebook.com/foring.ss/" target="_blank"><i class="ti-facebook mr-3"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://api.whatsapp.com/send?phone=8801673732669&app=facebook&entry_point=page_cta/" target="_blank"><i class="ti-text mr-3"></i></a>
+                                </li>
+                                <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-github mr-3"></i></a></li>
+                                <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-pinterest mr-3"></i></a></li>
+                                <li class="list-inline-item"><a href="#" target="_blank"><i class="ti-dribbble mr-3"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer End -->
+        <!-- jQuery -->
+
+        <script src="~/Content/hometheme/plugins/jQuery/jquery.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="~/Content/hometheme/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="~/Content/hometheme/plugins/aos/aos.js"></script>
+        <script src="~/Content/hometheme/plugins/owl-carousel/owl.carousel.min.js"></script>
+        <script src="~/Content/hometheme/plugins/shuffle/shuffle.min.js"></script>
+        <script src="~/Content/hometheme/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="~/Content/hometheme/plugins/animated-text/animated-text.js"></script>
+        <script src="~/Content/hometheme/plugins/counto/apear.js"></script>
+        <script src="~/Content/hometheme/plugins/counto/counTo.js"></script>
+
+        <!-- Google Map -->
+        <script src="~/Content/hometheme/plugins/google-map/map.js"></script>
+        <script src="https://g.page/foringctg?share"></script>
+        <!-- Main Script -->
+
+        <script src="~/Content/hometheme/js/script.js"></script>
+
+</html>

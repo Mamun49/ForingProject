@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ForingProject.Models.UserRole>
+
+@{
+    ViewBag.Title = "GetRoleList";
+}
+
+<h2>GetRoleList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "RoleList", "admin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
+            
+           
+            @Html.ActionLink("Delete", "GetRoleDelete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
